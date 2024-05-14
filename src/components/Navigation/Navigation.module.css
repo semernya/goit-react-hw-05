@@ -1,13 +1,18 @@
+.container {
+    margin-bottom: 60px;
+}
+
 .navList {
     display: flex;
+    gap: 20px;
 }
 
 .link {
-    font-size: 40px;
+    font-size: 30px;
     text-decoration: none;
-    color: blue;
+    border-radius: 10px;
     padding: 30px;
-    border-radius: 20px;
+    color: blue;
 }
 
 .active {

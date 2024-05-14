@@ -5,8 +5,11 @@ import MoviesPage from '../../pages/MoviesPage/MoviesPage';
 import MovieDetailsPage from '../../pages/MovieDetailsPage/MovieDetailsPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import "./App.css";
+import { getMovieById } from '../../movies-api';
 
 export default function App() {
+
+  getMovieById(823464);
 
   return (
     <Layout>

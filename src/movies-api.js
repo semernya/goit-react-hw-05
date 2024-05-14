@@ -10,6 +10,11 @@ const options = {
 
 export const getTrendingMovies = async () => {
     const response = await axios.get('trending/movie/day?language=en-US', options);
-    console.log(response.data.results);
     return response.data.results;
+}
+
+export const getMovieById = async (movieId) => {
+    const response = await axios.get(`movie/${movieId}?language=en-US`, options);
+    console.log(response.data);
+    return response.data;
 }

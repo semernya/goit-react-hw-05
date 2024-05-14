@@ -5,15 +5,23 @@ import { useState, useEffect } from 'react';
 export default function HomePage() {
 
     const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(false);
+    // eslint-disable-next-line no-unused-vars
+    const [error, setError] = useState(false);
+
 
     useEffect(() => {
         const getMovies = async () => {
             try {
+                setLoading(true);
                 const data = await getTrendingMovies();
                 setMovies(data);
-                console.log(data);
             } catch (error) {
-                console.log('Error!');
+                setError(true);
+                alert('Error occured! Please try again.')
+                setMovies([]);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -22,8 +30,13 @@ export default function HomePage() {
 
     return (
         <div>
-            <h1>Trending today:</h1>
-            {movies.length > 0 && <MovieList movies={movies} />}
+            {loading && <b>Loading movies. Please wait...</b>}
+            {movies.length > 0 &&
+                <div>
+                    <h1>Trending today:</h1>
+                    <MovieList movies={movies} />
+                </div>
+            }
         </div>
     )
 }

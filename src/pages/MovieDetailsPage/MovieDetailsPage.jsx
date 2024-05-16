@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { getMovieById } from '../../movies-api';
 import MovieInfo from '../../components/MovieInfo/MovieInfo';
 
@@ -31,7 +32,20 @@ export default function MovieDetailsPage() {
     return (
         <div>
             {loading && <p>Page is loading. Please wait...</p>}
+
+            <Link to='/'>Go back</Link>
             {movie && <MovieInfo movie={movie} />}
+            <br />
+            <p>Additional information:</p>
+            <ul>
+                <li>
+                    <Link to='cast'>Cast</Link>
+                </li>
+                <li>
+                    <Link to='reviews'>Reviews</Link>
+                </li>
+            </ul>
+            <Outlet />
         </div>
     )
 }

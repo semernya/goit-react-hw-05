@@ -15,6 +15,11 @@ export const getTrendingMovies = async () => {
 
 export const getMovieById = async (movieId) => {
     const response = await axios.get(`movie/${movieId}?language=en-US`, options);
+    return response.data;
+}
+
+export const getMovieCredits = async (movieId) => {
+    const response = await axios.get(`movie/${movieId}/credits`, options);
     console.log(response.data);
     return response.data;
 }

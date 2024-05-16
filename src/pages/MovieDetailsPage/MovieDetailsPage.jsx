@@ -5,10 +5,9 @@ import MovieInfo from '../../components/MovieInfo/MovieInfo';
 
 export default function MovieDetailsPage() {
 
-    const { movieId } = useParams;
+    const { movieId } = useParams();
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(false);
-    // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState(false);
 
     useEffect(() => {

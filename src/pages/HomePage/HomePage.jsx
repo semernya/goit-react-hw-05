@@ -1,12 +1,12 @@
 import MovieList from "../../components/MovieList/MovieList"
 import { getTrendingMovies } from '../../movies-api';
 import { useState, useEffect } from 'react';
+import css from './HomePage.module.css'
 
 export default function HomePage() {
 
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
-    // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState(false);
 
 
@@ -33,7 +33,7 @@ export default function HomePage() {
             {loading && <b>Loading movies. Please wait...</b>}
             {movies.length > 0 &&
                 <div>
-                    <h1>Trending today:</h1>
+                    <h1 className={css.title}>Trending today:</h1>
                     <MovieList movies={movies} />
                 </div>
             }

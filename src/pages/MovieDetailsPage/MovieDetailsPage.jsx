@@ -3,6 +3,7 @@ import { Outlet, useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { getMovieById } from '../../movies-api';
 import MovieInfo from '../../components/MovieInfo/MovieInfo';
+import css from './MovieDetailsPage.module.css'
 
 export default function MovieDetailsPage() {
 
@@ -33,16 +34,15 @@ export default function MovieDetailsPage() {
         <div>
             {loading && <p>Page is loading. Please wait...</p>}
 
-            <Link to='/'>Go back</Link>
+            <Link to='/' className={css.homeLink}>Go back</Link>
             {movie && <MovieInfo movie={movie} />}
-            <br />
-            <p>Additional information:</p>
-            <ul>
-                <li>
-                    <Link to='cast'>Cast</Link>
+            <h3>Additional information:</h3>
+            <ul className={css.list}>
+                <li className={css.listItem}>
+                    <Link to='cast' className={css.link}>Cast</Link>
                 </li>
-                <li>
-                    <Link to='reviews'>Reviews</Link>
+                <li className={css.listItem}>
+                    <Link to='reviews' className={css.link}>Reviews</Link>
                 </li>
             </ul>
             <Outlet />

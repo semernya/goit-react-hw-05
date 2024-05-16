@@ -20,7 +20,7 @@ export default function MovieCast() {
         }
 
         fetchMovieCreditsById();
-    }, [])
+    }, [movieId])
 
     return (
         <ul>

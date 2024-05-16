@@ -20,6 +20,11 @@ export const getMovieById = async (movieId) => {
 
 export const getMovieCredits = async (movieId) => {
     const response = await axios.get(`movie/${movieId}/credits`, options);
+    return response.data;
+}
+
+export const getMovieReviews = async (movieId) => {
+    const response = await axios.get(`movie/${movieId}/reviews`, options);
     console.log(response.data);
     return response.data;
 }

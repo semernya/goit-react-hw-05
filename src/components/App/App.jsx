@@ -27,7 +27,3 @@ export default function App() {
     </Layout>
   )
 }
-
-// loader, errorComponent
-//к-сть пейджів у каста
-// design the cast

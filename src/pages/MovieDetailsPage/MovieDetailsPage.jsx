@@ -3,6 +3,7 @@ import { Outlet, useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { getMovieById } from '../../movies-api';
 import MovieInfo from '../../components/MovieInfo/MovieInfo';
+import Error from '../../components/Error/Error';
 import css from './MovieDetailsPage.module.css'
 
 export default function MovieDetailsPage() {
@@ -20,7 +21,6 @@ export default function MovieDetailsPage() {
                 setMovie(data);
             } catch (error) {
                 setError(true);
-                alert('Error occured! Please try again.')
                 setMovie(null);
             } finally {
                 setLoading(false);
@@ -33,6 +33,8 @@ export default function MovieDetailsPage() {
     return (
         <div>
             {loading && <p>Page is loading. Please wait...</p>}
+
+            {error && <Error />}
 
             <Link to='/' className={css.homeLink}>Go back</Link>
             {movie && <MovieInfo movie={movie} />}

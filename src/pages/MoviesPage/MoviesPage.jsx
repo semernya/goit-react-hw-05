@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchForm from "../../components/SearchForm/SearchForm"
 import { getMovieByQuery } from "../../movies-api";
+import css from './MoviesPage.module.css'
 
 export default function MoviesPage() {
 
@@ -41,12 +42,12 @@ export default function MoviesPage() {
     return (
         <div>
             <SearchForm onSubmit={handleSearch} onError={handleError} />
-            <ul>
+            <ul className={css.list}>
                 {
                     list.map((item) => {
                         return (
-                            <li key={item.id}>
-                                <Link to={`/movies/${item.id}`}>{item.title}</Link>
+                            <li key={item.id} className={css.listItem}>
+                                <Link to={`/movies/${item.id}`} className={css.link}>{item.title}</Link>
                             </li>
                         )
                     })}

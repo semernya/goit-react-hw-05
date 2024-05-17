@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { getMovieById } from '../../movies-api';
+import { Suspense } from 'react';
 import MovieInfo from '../../components/MovieInfo/MovieInfo';
 import Error from '../../components/Error/Error';
 import css from './MovieDetailsPage.module.css'
@@ -9,6 +10,7 @@ import css from './MovieDetailsPage.module.css'
 export default function MovieDetailsPage() {
 
     const { movieId } = useParams();
+    const location = useLocation();
     const [movie, setMovie] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -32,7 +34,7 @@ export default function MovieDetailsPage() {
 
     return (
         <div>
-            <Link to='/' className={css.homeLink}>Go back</Link>
+            <Link to='/movies' state={location} className={css.homeLink}>Go back</Link>
 
             {loading && <p>Page is loading. Please wait...</p>}
             {error && <Error />}
@@ -49,7 +51,10 @@ export default function MovieDetailsPage() {
                             <Link to='reviews' className={css.link}>Reviews</Link>
                         </li>
                     </ul>
-                    <Outlet />
+
+                    <Suspense fallback={<div>Loading subpage...</div>}>
+                        <Outlet />
+                    </Suspense>
                 </div>
             }
         </div>

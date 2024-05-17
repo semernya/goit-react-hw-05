@@ -32,22 +32,26 @@ export default function MovieDetailsPage() {
 
     return (
         <div>
-            {loading && <p>Page is loading. Please wait...</p>}
+            <Link to='/' className={css.homeLink}>Go back</Link>
 
+            {loading && <p>Page is loading. Please wait...</p>}
             {error && <Error />}
 
-            <Link to='/' className={css.homeLink}>Go back</Link>
-            {movie && <MovieInfo movie={movie} />}
-            <h3>Additional information:</h3>
-            <ul className={css.list}>
-                <li className={css.listItem}>
-                    <Link to='cast' className={css.link}>Cast</Link>
-                </li>
-                <li className={css.listItem}>
-                    <Link to='reviews' className={css.link}>Reviews</Link>
-                </li>
-            </ul>
-            <Outlet />
+            {movie &&
+                <div>
+                    <MovieInfo movie={movie} />
+                    <h3>Additional information:</h3>
+                    <ul className={css.list}>
+                        <li className={css.listItem}>
+                            <Link to='cast' className={css.link}>Cast</Link>
+                        </li>
+                        <li className={css.listItem}>
+                            <Link to='reviews' className={css.link}>Reviews</Link>
+                        </li>
+                    </ul>
+                    <Outlet />
+                </div>
+            }
         </div>
     )
 }

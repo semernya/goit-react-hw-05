@@ -30,7 +30,6 @@ export default function MoviesPage() {
             try {
                 setLoading(true);
                 const data = await getMovieByQuery(query);
-                console.log(data);
                 setList(data);
             } catch (error) {
                 setError(true);

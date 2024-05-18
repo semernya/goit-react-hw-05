@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import SearchForm from "../../components/SearchForm/SearchForm"
 import { getMovieByQuery } from "../../movies-api";
 import css from './MoviesPage.module.css'
 
 export default function MoviesPage() {
 
-    const [query, setQuery] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const query = searchParams.get('query') ?? '';
+
     const [list, setList] = useState([]);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const handleSearch = async (newQuery) => {
-        setQuery(newQuery);
+    const handleSearch = (newQuery) => {
+        setSearchParams({ query: newQuery });
     }
 
     const handleError = (errorState) => {

@@ -16,6 +16,8 @@ export default function MovieDetailsPage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
+    console.log(linkRef.current);
+
     useEffect(() => {
         const fetchMovieById = async () => {
             try {
@@ -35,7 +37,7 @@ export default function MovieDetailsPage() {
 
     return (
         <div>
-            <Link to='/movies' state={location} ref={linkRef} className={css.homeLink}>Go back</Link>
+            <Link to={linkRef.current ?? '/'} className={css.homeLink}>Go back</Link>
 
             {loading && <p>Page is loading. Please wait...</p>}
             {error && <Error />}
